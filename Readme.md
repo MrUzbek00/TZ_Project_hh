@@ -1,3 +1,4 @@
+![Static Badge](https://img.shields.io/badge/Licance_-MIT-orange) ![Static Badge](https://img.shields.io/badge/Python-3.8%2B-success?style=flat&logo=python&logoColor=orange&labelColor=blue) ![Static Badge](https://img.shields.io/badge/Version-0.1-success?style=flat&labelColor=blue)
 # 🧩 Система управления пользователями с кастомной авторизацией и RBAC
 
 ## Краткое описание / Short description
