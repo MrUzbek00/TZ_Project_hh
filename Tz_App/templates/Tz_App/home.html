@@ -1,0 +1,78 @@
+{% extends 'Tz_app/base.html' %}
+
+{% block content %}
+  <div class="container-fluid">
+    {% if messages %}
+      <div class="alert alert-info">
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <div class="d-flex justify-content-between mt-5">
+      <h1>User Profiles</h1>
+      <div class="mt-auto">
+      <a href="{% url 'logout' %}" class="btn btn-secondary pt-auto">Log out</a>
+      </div>
+    </div>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Paternity Name</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Created At</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <form method="POST" action="{% url 'update_user' user.user_id %}">
+          {% csrf_token %}
+          <tr>
+            <td> <input name="name" value="{{ user.name }}" /></td>
+            <td> <input name="last_name" value="{{ user.last_name }}" /></td>
+            <td> <input name="paternity_name" value="{{ user.paternity_name }}" /></td>
+            <td> <input name="password" type="password" placeholder="New password (optional)" /></td>
+            <td> <input name="email" value="{{ user.email }}"/></td>
+            <td> {{ user.created_at }}</td>
+            <td>{% if cu.role and cu.role.role == "admin" %}
+                <select name="role" class="form-select">
+                  {% for role in roles %}
+                    <option value="{{ role.role }}"
+                      {% if user.role and user.role.role == role.role %}selected{% endif %}>
+                      {{ role.role }}
+                    </option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                {{ user.role }}
+              {% endif %}
+            </td>
+            <td>
+              {% if user.is_active %}
+                <span class="badge bg-success">Active</span>
+              {% else %}
+                <span class="badge bg-danger">Inactive</span>
+              {% endif %}
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary ml-2">Save</button>
+                <form method="POST" action="{% url 'delete_user' user.user_id %}" style="display:inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger ml-2">Delete</button>
+                </form>
+            </td>
+          </tr>
+          </form>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

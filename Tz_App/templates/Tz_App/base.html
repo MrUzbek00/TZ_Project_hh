@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a;   /* slate-900 */
+      --bg2:#111827;   /* gray-900 */
+      --card:#0b1220cc; /* translucent */
+      --border: rgba(255,255,255,.12);
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(900px 500px at 10% 10%, #2563eb33, transparent 60%),
+        radial-gradient(700px 500px at 90% 20%, #22c55e26, transparent 60%),
+        radial-gradient(800px 600px at 50% 90%, #a855f726, transparent 65%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+
+    .auth-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      border-radius: 18px;
+    }
+
+    .brand-badge{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #2563eb, #a855f7);
+      box-shadow: 0 12px 30px rgba(37,99,235,.25);
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .form-control, .form-check-input{
+      border-color: rgba(255,255,255,.14) !important;
+    }
+
+    .form-control{
+      background: rgba(255,255,255,.04) !important;
+      color: #e5e7eb !important;
+    }
+
+    .form-control::placeholder{ color: rgba(229,231,235,.55); }
+
+    .form-control:focus{
+      box-shadow: 0 0 0 .25rem rgba(37,99,235,.25);
+      border-color: rgba(37,99,235,.6) !important;
+    }
+
+    .btn-primary{
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: none;
+    }
+
+    .btn-primary:hover{
+      filter: brightness(1.05);
+    }
+
+    .muted-link{
+      color: rgba(229,231,235,.75);
+      text-decoration: none;
+    }
+    .muted-link:hover{
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Nice split layout on large screens */
+    .side-panel{
+      border-left: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-top-right-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
+  </style>
+</head>
+
+<body class="text-light">
+    {% block content %}
+    {% endblock %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
